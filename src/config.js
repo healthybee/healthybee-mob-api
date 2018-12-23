@@ -24,7 +24,6 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     root: path.join(__dirname, '..'),
     port: process.env.PORT || 9000,
-    ip: process.env.IP || '0.0.0.0',
     apiRoot: process.env.API_ROOT || '',
     defaultEmail: 'no-reply@hb-mob-api.com',
     sendgridKey: requireProcessEnv('SENDGRID_KEY'),
@@ -48,7 +47,6 @@ const config = {
     }
   },
   production: {
-    ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
       uri: process.env.MONGODB_URI || 'mongodb://localhost/hb-mob-api'
