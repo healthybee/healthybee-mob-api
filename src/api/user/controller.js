@@ -2,8 +2,13 @@ import { success, notFound } from '../../services/response/'
 import { User } from '.'
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  User.find(query, select, cursor)
-    .then((users) => users.map((user) => user.view()))
+  User.count(query)
+    .then(count => User.find(query, select, cursor)
+      .then(users => ({
+        rows: users.map((user) => user.view()),
+        count
+      }))
+    )
     .then(success(res))
     .catch(next)
 

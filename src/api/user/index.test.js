@@ -22,7 +22,8 @@ test('GET /users 200 (admin)', async () => {
     .get(apiRoot)
     .query({ access_token: adminSession })
   expect(status).toBe(200)
-  expect(Array.isArray(body)).toBe(true)
+  expect(Array.isArray(body.rows)).toBe(true)
+  expect(Number.isNaN(body.count)).toBe(false)
 })
 
 test('GET /users?page=2&limit=1 200 (admin)', async () => {
@@ -30,8 +31,9 @@ test('GET /users?page=2&limit=1 200 (admin)', async () => {
     .get(apiRoot)
     .query({ access_token: adminSession, page: 2, limit: 1 })
   expect(status).toBe(200)
-  expect(Array.isArray(body)).toBe(true)
-  expect(body.length).toBe(1)
+  expect(Array.isArray(body.rows)).toBe(true)
+  expect(Number.isNaN(body.count)).toBe(false)
+  expect(body.rows.length).toBe(1)
 })
 
 test('GET /users?q=user 200 (admin)', async () => {
@@ -39,8 +41,9 @@ test('GET /users?q=user 200 (admin)', async () => {
     .get(apiRoot)
     .query({ access_token: adminSession, q: 'user' })
   expect(status).toBe(200)
-  expect(Array.isArray(body)).toBe(true)
-  expect(body.length).toBe(2)
+  expect(Array.isArray(body.rows)).toBe(true)
+  expect(Number.isNaN(body.count)).toBe(false)
+  expect(body.rows.length).toBe(2)
 })
 
 test('GET /users?fields=name 200 (admin)', async () => {
@@ -48,8 +51,9 @@ test('GET /users?fields=name 200 (admin)', async () => {
     .get(apiRoot)
     .query({ access_token: adminSession, fields: 'name' })
   expect(status).toBe(200)
-  expect(Array.isArray(body)).toBe(true)
-  expect(Object.keys(body[0])).toEqual(['id', 'name'])
+  expect(Array.isArray(body.rows)).toBe(true)
+  expect(Number.isNaN(body.count)).toBe(false)
+  expect(Object.keys(body.rows[0])).toEqual(['id', 'name'])
 })
 
 test('GET /users 401 (user)', async () => {
