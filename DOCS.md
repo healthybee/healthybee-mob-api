@@ -7,6 +7,13 @@
 	- [Authenticate with Facebook](#authenticate-with-facebook)
 	- [Authenticate with Google](#authenticate-with-google)
 	
+- [Order](#order)
+	- [Create order](#create-order)
+	- [Delete order](#delete-order)
+	- [Retrieve order](#retrieve-order)
+	- [Retrieve orders](#retrieve-orders)
+	- [Update order](#update-order)
+	
 - [PasswordReset](#passwordreset)
 	- [Send email](#send-email)
 	- [Submit password](#submit-password)
@@ -68,6 +75,80 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Google user accessToken.</p>							|
+
+# Order
+
+## Create order
+
+
+
+	POST /orders
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| orderName			| 			|  <p>Order's orderName.</p>							|
+
+## Delete order
+
+
+
+	DELETE /orders/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+
+## Retrieve order
+
+
+
+	GET /orders/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+
+## Retrieve orders
+
+
+
+	GET /orders
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update order
+
+
+
+	PUT /orders/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| orderName			| 			|  <p>Order's orderName.</p>							|
 
 # PasswordReset
 
