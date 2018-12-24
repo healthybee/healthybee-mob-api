@@ -21,6 +21,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 6
   },
+  mobile: {
+    type: Number,
+    required: true,
+    minlength: 10
+  },
   name: {
     type: String,
     index: true,
@@ -90,12 +95,13 @@ userSchema.methods = {
 userSchema.statics = {
   roles,
 
-  createFromService ({ service, id, email, name, picture }) {
+  createFromService ({ service, id, email, mobile, name, picture }) {
     return this.findOne({ $or: [{ [`services.${service}`]: id }, { email }] }).then((user) => {
       if (user) {
         user.services[service] = id
         user.name = name
         user.picture = picture
+        user.mobile = mobile
         return user.save()
       } else {
         const password = randtoken.generate(16)
@@ -105,7 +111,7 @@ userSchema.statics = {
   }
 }
 
-userSchema.plugin(mongooseKeywords, { paths: ['email', 'name'] })
+userSchema.plugin(mongooseKeywords, { paths: ['email', 'name', 'mobile'] })
 
 const model = mongoose.model('User', userSchema)
 
