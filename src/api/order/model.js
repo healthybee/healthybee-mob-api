@@ -1,8 +1,19 @@
 import mongoose, { Schema } from 'mongoose'
 
 const orderSchema = new Schema({
+  userId: {
+    type: Object
+  },
   orderName: {
-    type: String
+    type: String,
+    trim: true
+  },
+  status: {
+    type: Boolean
+  },
+  startDate: {
+    type: Date,
+    trim: true
   }
 }, {
   timestamps: true,
