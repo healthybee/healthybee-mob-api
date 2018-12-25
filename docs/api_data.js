@@ -1,6 +1,372 @@
 define({ "api": [
   {
     "type": "post",
+    "url": "/addresses",
+    "title": "Create address",
+    "name": "CreateAddress",
+    "group": "Address",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>user access token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "address",
+            "description": "<p>Address's data.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Address not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/address/index.js",
+    "groupTitle": "Address"
+  },
+  {
+    "type": "delete",
+    "url": "/addresses/:id",
+    "title": "Delete address",
+    "name": "DeleteAddress",
+    "group": "Address",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>admin access token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 204": [
+          {
+            "group": "Success 204",
+            "optional": false,
+            "field": "204",
+            "description": "<p>No Content.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Address not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/address/index.js",
+    "groupTitle": "Address"
+  },
+  {
+    "type": "get",
+    "url": "/addresses/:id",
+    "title": "Retrieve address",
+    "name": "RetrieveAddress",
+    "group": "Address",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>user access token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "address",
+            "description": "<p>Address's data.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Address not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/address/index.js",
+    "groupTitle": "Address"
+  },
+  {
+    "type": "get",
+    "url": "/addresses",
+    "title": "Retrieve addresses",
+    "name": "RetrieveAddresses",
+    "group": "Address",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>user access token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "q",
+            "description": "<p>Query to search.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..30",
+            "optional": true,
+            "field": "page",
+            "defaultValue": "1",
+            "description": "<p>Page number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..100",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "30",
+            "description": "<p>Amount of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "sort",
+            "defaultValue": "-createdAt",
+            "description": "<p>Order of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "fields",
+            "description": "<p>Fields to be returned.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "addresses",
+            "description": "<p>List of addresses.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/address/index.js",
+    "groupTitle": "Address"
+  },
+  {
+    "type": "put",
+    "url": "/addresses/:id",
+    "title": "Update address",
+    "name": "UpdateAddress",
+    "group": "Address",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>user access token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "address",
+            "description": "<p>Address's data.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Address not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/address/index.js",
+    "groupTitle": "Address"
+  },
+  {
+    "type": "post",
     "url": "/auth",
     "title": "Authenticate",
     "name": "Authenticate",
@@ -299,74 +665,6 @@ define({ "api": [
     "error": {
       "fields": {
         "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "404",
-            "description": "<p>Order not found.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "401",
-            "description": "<p>master access only.</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "src/api/order/index.js",
-    "groupTitle": "Order"
-  },
-  {
-    "type": "get",
-    "url": "/orders/:id",
-    "title": "Retrieve order",
-    "name": "RetrieveOrder",
-    "group": "Order",
-    "permission": [
-      {
-        "name": "master",
-        "title": "Master access only",
-        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "access_token",
-            "description": "<p>master access token.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "order",
-            "description": "<p>Order's data.</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "type": "Object",
-            "optional": false,
-            "field": "400",
-            "description": "<p>Some parameters may contain invalid values.</p>"
-          },
           {
             "group": "Error 4xx",
             "optional": false,

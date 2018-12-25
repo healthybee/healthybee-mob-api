@@ -1,8 +1,8 @@
 import { success, notFound } from '../../services/response/'
 import { Order } from '.'
 
-export const create = ({ bodymen: { body } }, res, next) =>
-  Order.create(body)
+export const create = ({ user, body }, res, next) =>
+  Order.create({ ...body, user })
     .then((order) => order.view(true))
     .then(success(res, 201))
     .catch(next)

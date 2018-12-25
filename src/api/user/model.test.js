@@ -4,7 +4,7 @@ import { User } from '.'
 let user
 
 beforeEach(async () => {
-  user = await User.create({ name: 'user', email: 'a@a.com', password: '123456', mobile: 1234567890 })
+  user = await User.create({ name: 'user', email: 'a@a.com', password: '123456', mobile: '1234567890' })
 })
 
 describe('set email', () => {
@@ -39,6 +39,7 @@ describe('view', () => {
     expect(view.id).toBe(user.id)
     expect(view.name).toBe(user.name)
     expect(view.picture).toBe(user.picture)
+    expect(view.mobile).toBe(user.mobile)
   })
 
   it('returns full view', () => {
@@ -48,6 +49,7 @@ describe('view', () => {
     expect(view.name).toBe(user.name)
     expect(view.email).toBe(user.email)
     expect(view.picture).toBe(user.picture)
+    expect(view.mobile).toBe(user.mobile)
     expect(view.createdAt).toEqual(user.createdAt)
   })
 })
@@ -70,7 +72,8 @@ describe('createFromService', () => {
       id: '123',
       name: 'Test Name',
       email: 'test@test.com',
-      picture: 'test.jpg'
+      picture: 'test.jpg',
+      mobile: '1234567890'
     }
   })
 

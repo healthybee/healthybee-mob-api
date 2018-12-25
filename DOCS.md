@@ -2,6 +2,13 @@
 
 
 
+- [Address](#address)
+	- [Create address](#create-address)
+	- [Delete address](#delete-address)
+	- [Retrieve address](#retrieve-address)
+	- [Retrieve addresses](#retrieve-addresses)
+	- [Update address](#update-address)
+	
 - [Auth](#auth)
 	- [Authenticate](#authenticate)
 	- [Authenticate with Facebook](#authenticate-with-facebook)
@@ -29,6 +36,78 @@
 	- [Update user](#update-user)
 	
 
+
+# Address
+
+## Create address
+
+
+
+	POST /addresses
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Delete address
+
+
+
+	DELETE /addresses/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve address
+
+
+
+	GET /addresses/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve addresses
+
+
+
+	GET /addresses
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update address
+
+
+
+	PUT /addresses/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
 
 # Auth
 

@@ -1,13 +1,10 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
-import { middleware as body } from 'bodymen'
-import { master } from '../../services/passport'
-import { create, index, show, showByUser, update, destroy } from './controller'
-import { schema } from './model'
+import { token, master } from '../../services/passport'
+import { create, index, show, update, destroy } from './controller'
 export Order, { schema } from './model'
 
 const router = new Router()
-const { userId, orderName, isActive } = schema.tree
 
 /**
  * @api {post} /orders Create order
@@ -22,8 +19,7 @@ const { userId, orderName, isActive } = schema.tree
  * @apiError 401 master access only.
  */
 router.post('/',
-  master(),
-  body({ userId, orderName, isActive }),
+  token({ required: true }),
   create)
 
 /**
@@ -38,7 +34,7 @@ router.post('/',
  * @apiError 401 master access only.
  */
 router.get('/',
-  master(),
+  token({ required: true }),
   query(),
   index)
 
@@ -54,7 +50,7 @@ router.get('/',
  * @apiError 401 master access only.
  */
 router.get('/:id',
-  master(),
+  token({ required: true }),
   show)
 
 /**
@@ -70,8 +66,7 @@ router.get('/:id',
  * @apiError 401 master access only.
  */
 router.put('/:id',
-  master(),
-  body({ userId, orderName, isActive }),
+  token({ required: true }),
   update)
 
 /**
@@ -85,24 +80,7 @@ router.put('/:id',
  * @apiError 401 master access only.
  */
 router.delete('/:id',
-  master(),
+  token({ required: true, roles: ['admin'] }),
   destroy)
-
-
-/**
- * @api {get} /orders/:id Retrieve order
- * @apiName RetrieveOrder
- * @apiGroup Order
- * @apiPermission master
- * @apiParam {String} access_token master access token.
- * @apiSuccess {Object} order Order's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Order not found.
- * @apiError 401 master access only.
- */
-router.get('/users/:id',
-  master(),
-  showByUser)
-  
 
 export default router

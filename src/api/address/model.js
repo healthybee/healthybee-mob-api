@@ -1,33 +1,44 @@
 import mongoose, { Schema } from 'mongoose'
 
-const orderSchema = new Schema({
+const addressSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User',
     required: true
   },
-  orderName: {
+  addressType: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  line1: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  line2: {
     type: String,
     trim: true
   },
-  isActive: {
-    type: Boolean,
-    trim: true
-  },
-  startDate: {
-    type: Date,
-    trim: true
-  },
-  deliverySlots: {
+  city: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
-  total: {
+  state: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  zipcode: {
     type: Number,
-    trim: true
+    trim: true,
+    required: true
   },
-  payment: {
-    type: String
+  landmark: {
+    type: String,
+    trim: true,
+    required: true
   }
 }, {
   timestamps: true,
@@ -37,13 +48,17 @@ const orderSchema = new Schema({
   }
 })
 
-orderSchema.methods = {
+addressSchema.methods = {
   view (full) {
     const view = {
       // simple view
       id: this.id,
       user: this.user.id,
-      orderName: this.orderName,
+      addressType: this.addressType,
+      line1: this.line1,
+      line2: this.line2,
+      city: this.city,
+      state: this.state,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
@@ -55,7 +70,7 @@ orderSchema.methods = {
   }
 }
 
-const model = mongoose.model('Order', orderSchema)
+const model = mongoose.model('Address', addressSchema)
 
 export const schema = model.schema
 export default model
