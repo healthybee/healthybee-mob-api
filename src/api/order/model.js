@@ -2,18 +2,32 @@ import mongoose, { Schema } from 'mongoose'
 
 const orderSchema = new Schema({
   userId: {
-    type: Object
+    type: Schema.Types.ObjectId,
+    trim: true,
+    required: true
   },
   orderName: {
     type: String,
     trim: true
   },
-  status: {
-    type: Boolean
+  isActive: {
+    type: Boolean,
+    trim: true
   },
   startDate: {
     type: Date,
     trim: true
+  },
+  deliverySlots: {
+    type: String,
+    trim: true
+  },
+  total: {
+    type: Number,
+    trim: true
+  },
+  payment: {
+    status: String
   }
 }, {
   timestamps: true,
@@ -28,6 +42,7 @@ orderSchema.methods = {
     const view = {
       // simple view
       id: this.id,
+      userId: this.userId,
       orderName: this.orderName,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt

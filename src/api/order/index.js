@@ -2,12 +2,12 @@ import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { master } from '../../services/passport'
-import { create, index, show, update, destroy } from './controller'
+import { create, index, show, showByUser, update, destroy } from './controller'
 import { schema } from './model'
 export Order, { schema } from './model'
 
 const router = new Router()
-const { orderName } = schema.tree
+const { userId, orderName, isActive } = schema.tree
 
 /**
  * @api {post} /orders Create order
@@ -23,7 +23,7 @@ const { orderName } = schema.tree
  */
 router.post('/',
   master(),
-  body({ orderName }),
+  body({ userId, orderName, isActive }),
   create)
 
 /**
@@ -71,7 +71,7 @@ router.get('/:id',
  */
 router.put('/:id',
   master(),
-  body({ orderName }),
+  body({ userId, orderName, isActive }),
   update)
 
 /**
@@ -87,5 +87,22 @@ router.put('/:id',
 router.delete('/:id',
   master(),
   destroy)
+
+
+/**
+ * @api {get} /orders/:id Retrieve order
+ * @apiName RetrieveOrder
+ * @apiGroup Order
+ * @apiPermission master
+ * @apiParam {String} access_token master access token.
+ * @apiSuccess {Object} order Order's data.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 404 Order not found.
+ * @apiError 401 master access only.
+ */
+router.get('/users/:id',
+  master(),
+  showByUser)
+  
 
 export default router

@@ -34,3 +34,10 @@ export const destroy = ({ params }, res, next) =>
     .then((order) => order ? order.remove() : null)
     .then(success(res, 204))
     .catch(next)
+
+export const showByUser = ({ params }, res, next) =>
+  Order.find({userId: params.id})
+    .then((orders) => orders.map((order) => order.view()))
+    .then(success(res))
+    .catch(next)
+  
