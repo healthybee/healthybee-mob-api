@@ -22,8 +22,9 @@ const userSchema = new Schema({
     minlength: 6
   },
   mobile: {
-    type: Number,
+    type: String,
     required: true,
+    trim: true,
     minlength: 10
   },
   name: {
@@ -79,7 +80,7 @@ userSchema.methods = {
     let fields = ['id', 'name', 'picture']
 
     if (full) {
-      fields = [...fields, 'email', 'createdAt']
+      fields = [...fields, 'email', 'mobile', 'createdAt']
     }
 
     fields.forEach((field) => { view[field] = this[field] })
