@@ -4,6 +4,12 @@ import auth from './auth'
 import passwordReset from './password-reset'
 import order from './order'
 import address from './address'
+import cart from './cart'
+import cart from './cart'
+import menu from './menu'
+import menu from './menu'
+import deliverySupport from './delivery-support'
+import cancelPolicy from './cancel-policy'
 
 const router = new Router()
 
@@ -35,5 +41,11 @@ router.use('/auth', auth)
 router.use('/password-resets', passwordReset)
 router.use('/orders', order)
 router.use('/addresses', address)
+router.use('/carts', cart)
+router.use('/carts', cart)
+router.use('/menus', menu)
+router.use('/menus', menu)
+router.use('/delivery-supports', deliverySupport)
+router.use('/cancel-policies', cancelPolicy)
 
 export default router
