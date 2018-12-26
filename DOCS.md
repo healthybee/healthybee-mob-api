@@ -14,6 +14,34 @@
 	- [Authenticate with Facebook](#authenticate-with-facebook)
 	- [Authenticate with Google](#authenticate-with-google)
 	
+- [CancelPolicy](#cancelpolicy)
+	- [Create cancel policy](#create-cancel-policy)
+	- [Delete cancel policy](#delete-cancel-policy)
+	- [Retrieve cancel policies](#retrieve-cancel-policies)
+	- [Retrieve cancel policy](#retrieve-cancel-policy)
+	- [Update cancel policy](#update-cancel-policy)
+	
+- [Cart](#cart)
+	- [Create cart](#create-cart)
+	- [Delete cart](#delete-cart)
+	- [Retrieve cart](#retrieve-cart)
+	- [Retrieve carts](#retrieve-carts)
+	- [Update cart](#update-cart)
+	
+- [DeliverySupport](#deliverysupport)
+	- [Create delivery support](#create-delivery-support)
+	- [Delete delivery support](#delete-delivery-support)
+	- [Retrieve delivery support](#retrieve-delivery-support)
+	- [Retrieve delivery supports](#retrieve-delivery-supports)
+	- [Update delivery support](#update-delivery-support)
+	
+- [Menu](#menu)
+	- [Create menu](#create-menu)
+	- [Delete menu](#delete-menu)
+	- [Retrieve menu](#retrieve-menu)
+	- [Retrieve menus](#retrieve-menus)
+	- [Update menu](#update-menu)
+	
 - [Order](#order)
 	- [Create order](#create-order)
 	- [Delete order](#delete-order)
@@ -154,6 +182,294 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Google user accessToken.</p>							|
+
+# CancelPolicy
+
+## Create cancel policy
+
+
+
+	POST /cancel-policies
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Delete cancel policy
+
+
+
+	DELETE /cancel-policies/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve cancel policies
+
+
+
+	GET /cancel-policies
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Retrieve cancel policy
+
+
+
+	GET /cancel-policies/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Update cancel policy
+
+
+
+	PUT /cancel-policies/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+# Cart
+
+## Create cart
+
+
+
+	POST /carts
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Delete cart
+
+
+
+	DELETE /carts/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve cart
+
+
+
+	GET /carts/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve carts
+
+
+
+	GET /carts
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update cart
+
+
+
+	PUT /carts/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+# DeliverySupport
+
+## Create delivery support
+
+
+
+	POST /delivery-supports
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Delete delivery support
+
+
+
+	DELETE /delivery-supports/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve delivery support
+
+
+
+	GET /delivery-supports/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve delivery supports
+
+
+
+	GET /delivery-supports
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update delivery support
+
+
+
+	PUT /delivery-supports/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+# Menu
+
+## Create menu
+
+
+
+	POST /menus
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Delete menu
+
+
+
+	DELETE /menus/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve menu
+
+
+
+	GET /menus/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+
+## Retrieve menus
+
+
+
+	GET /menus
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update menu
+
+
+
+	PUT /menus/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
 
 # Order
 
