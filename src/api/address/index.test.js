@@ -10,13 +10,13 @@ const app = () => express(apiRoot, routes)
 let userSession, anotherSession, adminSession, address
 
 beforeEach(async () => {
-  const user = await User.create({ email: 'a@a.com', password: '123456' })
-  const anotherUser = await User.create({ email: 'b@b.com', password: '123456' })
-  const admin = await User.create({ email: 'c@c.com', password: '123456', role: 'admin' })
+  const user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
+  const anotherUser = await User.create({ email: 'b@b.com', password: '123456', mobile: '1234567890' })
+  const admin = await User.create({ email: 'c@c.com', password: '123456', role: 'admin', mobile: '1234567890' })
   userSession = signSync(user.id)
   anotherSession = signSync(anotherUser.id)
   adminSession = signSync(admin.id)
-  address = await Address.create({ user })
+  address = await Address.create({ user, addressType: 'Home Address', line1: 'Dange chowk', city: 'pune', state: 'maharashtra', landmark: 'xyz', zipcode: 411033 })
 })
 
 test('POST /addresses 201 (user)', async () => {

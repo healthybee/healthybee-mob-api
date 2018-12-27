@@ -10,8 +10,8 @@ const app = () => express(apiRoot, routes)
 let userSession, anotherSession, cart
 
 beforeEach(async () => {
-  const user = await User.create({ email: 'a@a.com', password: '123456' })
-  const anotherUser = await User.create({ email: 'b@b.com', password: '123456' })
+  const user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
+  const anotherUser = await User.create({ email: 'b@b.com', password: '123456', mobile: '1234567890' })
   userSession = signSync(user.id)
   anotherSession = signSync(anotherUser.id)
   cart = await Cart.create({ user })

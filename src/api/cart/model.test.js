@@ -4,7 +4,7 @@ import { User } from '../user'
 let user, cart
 
 beforeEach(async () => {
-  user = await User.create({ email: 'a@a.com', password: '123456' })
+  user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
   cart = await Cart.create({ user })
 })
 

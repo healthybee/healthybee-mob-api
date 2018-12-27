@@ -10,8 +10,8 @@ const app = () => express(apiRoot, routes)
 let userSession, adminSession, cancelPolicy
 
 beforeEach(async () => {
-  const user = await User.create({ email: 'a@a.com', password: '123456' })
-  const admin = await User.create({ email: 'c@c.com', password: '123456', role: 'admin' })
+  const user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
+  const admin = await User.create({ email: 'c@c.com', password: '123456', role: 'admin', mobile: '1234567890' })
   userSession = signSync(user.id)
   adminSession = signSync(admin.id)
   cancelPolicy = await CancelPolicy.create({})

@@ -4,8 +4,8 @@ import { User } from '../user'
 let user, address
 
 beforeEach(async () => {
-  user = await User.create({ email: 'a@a.com', password: '123456' })
-  address = await Address.create({ user })
+  user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
+  address = await Address.create({ user, landmark: 'xyz' })
 })
 
 describe('view', () => {
@@ -15,6 +15,7 @@ describe('view', () => {
     expect(view.id).toBe(address.id)
     expect(typeof view.user).toBe('object')
     expect(view.user.id).toBe(user.id)
+    expect(view.landmark).toBeTruthy()
     expect(view.createdAt).toBeTruthy()
     expect(view.updatedAt).toBeTruthy()
   })
@@ -25,6 +26,7 @@ describe('view', () => {
     expect(view.id).toBe(address.id)
     expect(typeof view.user).toBe('object')
     expect(view.user.id).toBe(user.id)
+    expect(view.landmark).toBeTruthy()
     expect(view.createdAt).toBeTruthy()
     expect(view.updatedAt).toBeTruthy()
   })

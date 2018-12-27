@@ -8,7 +8,8 @@ const app = () => express(apiRoot, routes)
 let order
 
 beforeEach(async () => {
-  order = await Order.create({})
+  const user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
+  order = await Order.create({ user })
 })
 
 test('POST /orders 201 (master)', async () => {

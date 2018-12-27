@@ -4,7 +4,7 @@ import { User } from '../user'
 let passwordReset
 
 beforeEach(async () => {
-  const user = await User.create({ email: 'a@a.com', password: '123456' })
+  const user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
   passwordReset = await PasswordReset.create({ user })
 })
 

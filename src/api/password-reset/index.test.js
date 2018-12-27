@@ -11,7 +11,7 @@ let user, passwordReset
 
 beforeEach(async () => {
   nock('https://api.sendgrid.com').post('/v3/mail/send').reply(202)
-  user = await User.create({ email: 'a@a.com', password: '123456' })
+  user = await User.create({ email: 'a@a.com', password: '123456', mobile: '1234567890' })
   passwordReset = await PasswordReset.create({ user })
 })
 

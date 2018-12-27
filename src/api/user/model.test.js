@@ -91,6 +91,7 @@ describe('createFromService', () => {
         // update
         expect(updatedUser.name).toBe(serviceUser.name)
         expect(updatedUser.services[service]).toBe(serviceUser.id)
+        expect(updatedUser.services[service]).toBe(serviceUser.mobile)
         expect(updatedUser.picture).toBe(serviceUser.picture)
       })
 
@@ -103,6 +104,7 @@ describe('createFromService', () => {
         // update
         expect(updatedUser.name).toBe(serviceUser.name)
         expect(updatedUser.services[service]).toBe(serviceUser.id)
+        expect(updatedUser.services[service]).toBe(serviceUser.mobile)
         expect(updatedUser.picture).toBe(serviceUser.picture)
       })
 
