@@ -9,7 +9,7 @@ export const create = ({ body }, res, next) =>
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
   DeliverySupport.find(query, select, cursor)
-    .then((deliverySupports) => deliverySupports.map((deliverySupport) => deliverySupport.view()))
+    .then((deliverySupports) => deliverySupports.map((deliverySupport) => deliverySupport.view(true)))
     .then(success(res))
     .catch(next)
 

@@ -16,6 +16,8 @@ deliverySupportSchema.methods = {
     const view = {
       // simple view
       id: this.id,
+      question: this.question,
+      answer: this.answer,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
