@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
-import { token, master } from '../../services/passport'
+import { token } from '../../services/passport'
 import { create, index, show, update, destroy } from './controller'
 export Order, { schema } from './model'
 

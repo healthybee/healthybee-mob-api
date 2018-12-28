@@ -40,4 +40,3 @@ export const showByUser = ({ params }, res, next) =>
     .then((orders) => orders.map((order) => order.view()))
     .then(success(res))
     .catch(next)
-  
