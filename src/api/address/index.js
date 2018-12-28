@@ -71,14 +71,14 @@ router.put('/:id',
  * @api {delete} /addresses/:id Delete address
  * @apiName DeleteAddress
  * @apiGroup Address
- * @apiPermission admin
- * @apiParam {String} access_token admin access token.
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Address not found.
  * @apiError 401 admin access only.
  */
 router.delete('/:id',
-  token({ required: true, roles: ['admin'] }),
+  token({ required: true }),
   destroy)
 
 export default router
