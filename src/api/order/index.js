@@ -19,7 +19,7 @@ const router = new Router()
  * @apiError 401 master access only.
  */
 router.post('/',
-  token({ required: true }),
+  token({ required: true, roles: ['admin', 'user'] }),
   create)
 
 /**
@@ -34,7 +34,7 @@ router.post('/',
  * @apiError 401 master access only.
  */
 router.get('/',
-  token({ required: true }),
+  token({ required: true, roles: ['admin', 'user'] }),
   query(),
   index)
 
@@ -50,7 +50,7 @@ router.get('/',
  * @apiError 401 master access only.
  */
 router.get('/:id',
-  token({ required: true }),
+  token({ required: true, roles: ['admin', 'user'] }),
   show)
 
 /**
@@ -66,7 +66,7 @@ router.get('/:id',
  * @apiError 401 master access only.
  */
 router.put('/:id',
-  token({ required: true }),
+  token({ required: true, roles: ['admin', 'user'] }),
   update)
 
 /**
