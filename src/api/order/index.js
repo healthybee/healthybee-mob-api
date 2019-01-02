@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
-import { token, master } from '../../services/passport'
+import { token } from '../../services/passport'
 import { create, index, show, update, destroy } from './controller'
 export Order, { schema } from './model'
 
@@ -73,14 +73,14 @@ router.put('/:id',
  * @api {delete} /orders/:id Delete order
  * @apiName DeleteOrder
  * @apiGroup Order
- * @apiPermission master
- * @apiParam {String} access_token master access token.
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Order not found.
- * @apiError 401 master access only.
+ * @apiError 401 user access only.
  */
 router.delete('/:id',
-  token({ required: true, roles: ['admin'] }),
+  token({ required: true }),
   destroy)
 
 export default router

@@ -59,6 +59,8 @@ addressSchema.methods = {
       line2: this.line2,
       city: this.city,
       state: this.state,
+      landmark: this.landmark,
+      zipcode: this.zipcode,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
