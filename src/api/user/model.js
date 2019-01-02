@@ -23,9 +23,7 @@ const userSchema = new Schema({
   },
   mobile: {
     type: String,
-    required: true,
-    trim: true,
-    minlength: 10
+    trim: true
   },
   name: {
     type: String,

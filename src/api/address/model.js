@@ -53,7 +53,7 @@ addressSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      user: this.user.id,
+      user: this.user.view(),
       addressType: this.addressType,
       line1: this.line1,
       line2: this.line2,

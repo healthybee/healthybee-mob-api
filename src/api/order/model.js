@@ -27,7 +27,8 @@ const orderSchema = new Schema({
     trim: true
   },
   payment: {
-    type: String
+    type: String,
+    trim: true
   }
 }, {
   timestamps: true,
@@ -42,8 +43,13 @@ orderSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      user: this.user.id,
+      user: this.user.view(),
       orderName: this.orderName,
+      isActive: this.isActive,
+      startDate: this.startDate,
+      deliverySlots: this.deliverySlots,
+      total: this.total,
+      payment: this.payment,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
@@ -51,11 +57,6 @@ orderSchema.methods = {
     return full ? {
       ...view,
       // add properties for a full view
-      isActive: this.isActive,
-      startDate: this.startDate,
-      deliverySlots: this.deliverySlots,
-      total: this.total,
-      payment: this.payment
     } : view
   }
 }
