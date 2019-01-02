@@ -8,14 +8,8 @@ export const create = ({ user, body }, res, next) =>
     .catch(next)
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Cart.count(query)
-    .then(count => Cart.find(query, select, cursor)
-      .populate('user')
-      .then((carts) => ({
-        count,
-        rows: carts.map((cart) => cart.view())
-      }))
-    )
+  Cart.find(query, select, cursor)
+    .then((carts) => carts.map((cart) => cart.view()))
     .then(success(res))
     .catch(next)
 

@@ -9,7 +9,7 @@ export const create = ({ user, body }, res, next) =>
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
   Order.find(query, select, cursor)
-    .then((orders) => orders.map((order) => order.view()))
+    .then((orders) => orders.map((order) => order.view(true)))
     .then(success(res))
     .catch(next)
 
@@ -40,4 +40,3 @@ export const showByUser = ({ params }, res, next) =>
     .then((orders) => orders.map((order) => order.view()))
     .then(success(res))
     .catch(next)
-  

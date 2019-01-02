@@ -49,8 +49,13 @@ orderSchema.methods = {
     }
 
     return full ? {
-      ...view
+      ...view,
       // add properties for a full view
+      isActive: this.isActive,
+      startDate: this.startDate,
+      deliverySlots: this.deliverySlots,
+      total: this.total,
+      payment: this.payment
     } : view
   }
 }

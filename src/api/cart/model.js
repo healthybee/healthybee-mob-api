@@ -5,7 +5,8 @@ const cartSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User',
     required: true
-  }
+  },
+  orders: [{ body: String, date: Date }]
 }, {
   timestamps: true,
   toJSON: {
@@ -20,6 +21,7 @@ cartSchema.methods = {
       // simple view
       id: this.id,
       user: this.user.view(full),
+      orders: this.orders,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
