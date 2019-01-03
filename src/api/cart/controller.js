@@ -7,8 +7,8 @@ export const create = ({ user, body }, res, next) =>
     .then(success(res, 201))
     .catch(next)
 
-export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Cart.find(query, select, cursor)
+export const index = ({ querymen: { query, select, cursor }, user }, res, next) =>
+  Cart.find({ 'user': user._id }, select, cursor)
     .then((carts) => carts.map((cart) => cart.view()))
     .then(success(res))
     .catch(next)
