@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
-import { token, master } from '../../services/passport'
+import { token } from '../../services/passport'
 import { create, index, show, update, destroy } from './controller'
 export Menu, { schema } from './model'
 
@@ -34,7 +34,7 @@ router.post('/',
  * @apiError 401 master access only.
  */
 router.get('/',
-  master(),
+  token({ required: true }),
   query(),
   index)
 
@@ -50,7 +50,7 @@ router.get('/',
  * @apiError 401 master access only.
  */
 router.get('/:id',
-  master(),
+  token({ required: true }),
   show)
 
 /**
