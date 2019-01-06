@@ -7,10 +7,16 @@ export const create = ({ body }, res, next) =>
     .then(success(res, 201))
     .catch(next)
 
-// eslint-disable-next-line standard/object-curly-even-spacing
-export const index = ({querymen: { query, select, cursor } }, res, next) => {
+export const index = ({ querymen: { query, select, cursor } }, res, next) => {
   Menu.find(query, select, cursor)
     .then((menus) => menus.map((menu) => menu.view()))
+    .then(success(res))
+    .catch(next)
+}
+
+export const showCategories = ({ querymen: { query, select, cursor } }, res, next) => {
+  Menu.distinct('category')
+    .then((categories) => categories.sort())
     .then(success(res))
     .catch(next)
 }
