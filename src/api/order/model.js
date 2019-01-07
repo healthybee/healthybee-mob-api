@@ -10,6 +10,7 @@ const orderSchema = new Schema({
     type: String,
     trim: true
   },
+  products: [],
   isActive: {
     type: Boolean,
     trim: true
@@ -45,6 +46,7 @@ orderSchema.methods = {
       id: this.id,
       user: this.user.view(),
       orderName: this.orderName,
+      products: this.products,
       isActive: this.isActive,
       startDate: this.startDate,
       deliverySlots: this.deliverySlots,
