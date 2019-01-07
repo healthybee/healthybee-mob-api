@@ -35,7 +35,12 @@ router.post('/',
  */
 router.get('/',
   token({ required: true }),
-  query(),
+  query({
+    category: {
+      type: String,
+      operator: '$regex'
+    }
+  }),
   index)
 
 /**
