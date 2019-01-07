@@ -13,13 +13,13 @@ export const create = ({ bodymen: { body: { email, link } } }, res, next) =>
       link = `${link.replace(/\/$/, '')}/${token}`
       const content = `
         Hey, ${user.name}.<br><br>
-        You requested a new password for your hb-mob-api account.<br>
+        You requested a new password for your HealthyBee account.<br>
         Please use the following link to set a new password. It will expire in 1 hour.<br><br>
         <a href="${link}">${link}</a><br><br>
         If you didn't make this request then you can safely ignore this email. :)<br><br>
-        &mdash; hb-mob-api Team
+        &mdash; HealthyBee Team
       `
-      return sendMail({ toEmail: email, subject: 'hb-mob-api - Password Reset', content })
+      return sendMail({ toEmail: email, subject: 'HealthyBee - Password Reset', content })
     })
     .then(([response]) => response ? res.status(response.statusCode).end() : null)
     .catch(next)
