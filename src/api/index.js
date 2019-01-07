@@ -8,6 +8,7 @@ import cart from './cart'
 import menu from './menu'
 import deliverySupport from './delivery-support'
 import cancelPolicy from './cancel-policy'
+import favourite from './favourite'
 
 const router = new Router()
 
@@ -43,5 +44,6 @@ router.use('/carts', cart)
 router.use('/menus', menu)
 router.use('/delivery-supports', deliverySupport)
 router.use('/cancel-policies', cancelPolicy)
+router.use('/favourites', favourite)
 
 export default router
