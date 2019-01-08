@@ -75,7 +75,7 @@ menuSchema.methods = {
   }
 }
 
-menuSchema.plugin(mongooseKeywords, { paths: ['category'] })
+menuSchema.plugin(mongooseKeywords, { paths: ['category', 'name', 'description', 'add_on', 'food_type', 'price'] })
 
 const model = mongoose.model('Menu', menuSchema)
 
