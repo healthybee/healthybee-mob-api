@@ -39,6 +39,11 @@ router.get('/',
     category: {
       type: String,
       operator: '$regex'
+    },
+    name: {
+      type: RegExp,
+      paths: ['name', 'description'],
+      bindTo: 'search'
     }
   }),
   index)
