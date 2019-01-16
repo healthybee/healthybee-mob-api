@@ -7,7 +7,7 @@ const cartSchema = new Schema({
     required: true
   },
   productId: {
-    type: String,
+    type: Schema.ObjectId,
     required: true
   },
   quantity: {
