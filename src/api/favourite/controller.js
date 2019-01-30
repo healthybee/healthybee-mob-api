@@ -7,12 +7,24 @@ export const create = ({ user, body }, res, next) =>
     .then(success(res, 201))
     .catch(next)
 
-export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Favourite.find(query, select, cursor)
-    .populate('user')
-    .then((favourites) => favourites.map((favourite) => favourite.view()))
+export const index = ({ querymen: { query, select, cursor }, user }, res, next) => {
+  let pipeline = [
+    { '$match': { 'user': user._id } },
+    {
+      '$lookup': {
+        'from': 'menus',
+        'localField': 'productId',
+        'foreignField': '_id',
+        'as': 'result'
+      }
+    }
+  ]
+
+  Favourite.aggregate(pipeline)
+    .then((favourites) => favourites.map((favourite) => favourite))
     .then(success(res))
     .catch(next)
+}
 
 export const show = ({ params }, res, next) =>
   Favourite.findById(params.id)

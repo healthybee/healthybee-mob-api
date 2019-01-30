@@ -22,7 +22,6 @@ favouriteSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      user: this.user.view(full),
       productId: this.productId,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
