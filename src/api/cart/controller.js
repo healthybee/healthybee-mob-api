@@ -7,11 +7,24 @@ export const create = ({ user, body }, res, next) =>
     .then(success(res, 201))
     .catch(next)
 
-export const index = ({ querymen: { query, select, cursor }, user }, res, next) =>
-  Cart.find({ 'user': user._id }, select, cursor)
-    .then((carts) => carts.map((cart) => cart.view()))
+export const index = ({ querymen: { query, select, cursor }, user }, res, next) => {
+  let pipeline = [
+    { '$match': { 'user': user._id } },
+    {
+      '$lookup': {
+        'from': 'menus',
+        'localField': 'productId',
+        'foreignField': '_id',
+        'as': 'result'
+      }
+    }
+  ]
+
+  Cart.aggregate(pipeline)
+    .then((carts) => carts.map((cart) => cart))
     .then(success(res))
     .catch(next)
+}
 
 export const show = ({ params }, res, next) =>
   Cart.findById(params.id)

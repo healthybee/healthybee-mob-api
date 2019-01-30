@@ -27,15 +27,15 @@ cartSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      user: this.user.view(full),
+      // user: this.user.view(full),
       productId: this.productId,
-      quantity: this.quantity,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt
+      quantity: this.quantity
     }
 
     return full ? {
-      ...view
+      ...view,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt
       // add properties for a full view
     } : view
   }
