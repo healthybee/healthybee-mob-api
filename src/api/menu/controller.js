@@ -8,6 +8,7 @@ export const create = ({ body }, res, next) =>
     .catch(next)
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) => {
+  res.set('Cache-Control', 'public, max-age=300, s-max-age=600')
   Menu.find(query, select, cursor)
     .then((menus) => menus.map((menu) => menu.view()))
     .then(success(res))
@@ -15,6 +16,7 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) => {
 }
 
 export const showCategories = ({ querymen: { query, select, cursor } }, res, next) => {
+  res.set('Cache-Control', 'public, max-age=300, s-max-age=600')
   Menu.distinct('category')
     .then((categories) => categories.sort())
     .then(success(res))

@@ -25,7 +25,7 @@ const config = {
     root: path.join(__dirname, '..'),
     port: process.env.PORT || 9000,
     apiRoot: process.env.API_ROOT || '',
-    defaultEmail: 'no-reply@hb-mob-api.com',
+    defaultEmail: 'no-reply@healthybee.fit',
     sendgridKey: requireProcessEnv('SENDGRID_KEY'),
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
