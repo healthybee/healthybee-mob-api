@@ -32,5 +32,5 @@ export const destroy = ({ params }, res, next) =>
   CancelPolicy.findById(params.id)
     .then(notFound(res))
     .then((cancelPolicy) => cancelPolicy ? cancelPolicy.remove() : null)
-    .then(success(res, 204))
+    .then(success(res, 200))
     .catch(next)

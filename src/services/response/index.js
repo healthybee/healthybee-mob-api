@@ -9,7 +9,10 @@ export const notFound = (res) => (entity) => {
   if (entity) {
     return entity
   }
-  res.status(404).end()
+  res.status(404).json({
+    message: 'not found',
+    code: 404
+  }).end()
   return null
 }
 
@@ -20,7 +23,10 @@ export const authorOrAdmin = (res, user, userField) => (entity) => {
     if (isAuthor || isAdmin) {
       return entity
     }
-    res.status(401).end()
+    res.status(401).json({
+      message: 'unauthorized',
+      code: 401
+    }).end()
   }
   return null
 }

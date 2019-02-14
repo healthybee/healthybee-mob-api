@@ -42,5 +42,5 @@ export const destroy = ({ params }, res, next) =>
   Menu.findById(params.id)
     .then(notFound(res))
     .then((menu) => menu ? menu.remove() : null)
-    .then(success(res, 204))
+    .then(success(res, 200))
     .catch(next)

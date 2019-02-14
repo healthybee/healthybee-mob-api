@@ -49,5 +49,5 @@ export const destroy = ({ user, params }, res, next) =>
     .then(notFound(res))
     .then(authorOrAdmin(res, user, 'user'))
     .then((favourite) => favourite ? favourite.remove() : null)
-    .then(success(res, 204))
+    .then(success(res, 200))
     .catch(next)

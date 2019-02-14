@@ -32,7 +32,7 @@ export const destroy = ({ params }, res, next) =>
   Order.findById(params.id)
     .then(notFound(res))
     .then((order) => order ? order.remove() : null)
-    .then(success(res, 204))
+    .then(success(res, 200))
     .catch(next)
 
 export const showByUser = ({ params }, res, next) =>
